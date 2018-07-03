@@ -6009,10 +6009,6 @@ var jptext = [
 
 export class SideCards extends React.Component {
 
-    handleClick(newLabel, Loc, ID) {
-        this.props.onLabelChange(newLabel, Loc, ID);
-    }
-
     returntext(i) {
         var string = jptext[parseInt(i, 0)].en.replace(/_/g, " ");
         return string.charAt(0).toUpperCase() + string.slice(1)
@@ -6022,7 +6018,7 @@ export class SideCards extends React.Component {
         var cardItems = cardDir.map(asdf => {
             const crdName = asdf.cardName, crdID = jptext[parseInt(asdf.tabID, 0)].num, crdLoc = asdf.cardLoc;
             return (
-                <button className="cardElement" key={asdf.tabID} onClick={this.handleClick.bind(this, crdName, crdLoc, crdID)}>
+                <button className="cardElement" key={asdf.tabID} onClick={this.props.onLabelChange.bind(this, crdName, crdLoc, crdID)}>
                     <Image size='tiny' floated='left' src={crdLoc} />
                     <div className="text">
                         <p>
